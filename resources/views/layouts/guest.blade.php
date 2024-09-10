@@ -7,6 +7,10 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
+        <!-- Website Logo and Texts -->
+        <title>{{ config('app.name', 'Batucommerce') }}</title>
+        <link rel="icon" type="image/x-icon" href="C:\Users\VICTUS\Desktop\Yeni klasör (6)\Proje-Trial\Batucommerce\resources\views\images\whitelogo.png">
+
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />

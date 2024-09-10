@@ -5,7 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <!-- Website Logo and Texts -->
+        <title>{{ config('app.name', 'Batucommerce') }}</title>
+        <link rel="icon" type="image/x-icon" href="C:\Users\VICTUS\Desktop\Yeni klasör (6)\Proje-Trial\Batucommerce\resources\views\images\whitelogo.png">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
