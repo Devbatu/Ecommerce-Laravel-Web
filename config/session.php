@@ -213,5 +213,8 @@ return [
     */
 
     'partitioned' => env('SESSION_PARTITIONED_COOKIE', false),
+    'lifetime' => 30, // 30 dakika sonra oturum kapanacak
 
+    'expire_on_close' => true,// Websitesi kapatıldığında oturum kapanacak
+    
 ];

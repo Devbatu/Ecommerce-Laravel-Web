@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Kaiadmin - Bootstrap 5 Admin Dashboard</title>
+    <title>Admin Panel</title>
     <meta
       content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
       name="viewport"
@@ -81,14 +81,14 @@
                   aria-expanded="false"
                 >
                   <i class="fas fa-home"></i>
-                  <p>Dashboard</p>
+                  <p>Ana Sayfa</p>
                   <span class="caret"></span>
                 </a>
                 <div class="collapse" id="dashboard">
                   <ul class="nav nav-collapse">
                     <li>
                       <a href="../demo1/index.html">
-                        <span class="sub-item">Dashboard 1</span>
+                        <span class="sub-item">Alt item</span>
                       </a>
                     </li>
                   </ul>

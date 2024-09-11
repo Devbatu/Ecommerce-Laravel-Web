@@ -17,22 +17,20 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
         <!-- Styles -->
+        <meta name="keywords" content="bootstrap, bootstrap4" />
+
+        <!-- Bootstrap CSS -->
+        <link href="home/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+        <link href="home/css/tiny-slider.css" rel="stylesheet">
+        <link href="home/css/style.css" rel="stylesheet">
         @livewireStyles
     </head>
     <body class="font-sans antialiased">
-        <x-banner />
 
-        <div class="min-h-screen bg-gray-100">
-            @livewire('navigation-menu')
 
             <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
+        @include('home.header')
 
             <!-- Page Content -->
             <main>
@@ -41,7 +39,12 @@
         </div>
 
         @stack('modals')
+        
+        @include('home.footer')
 
         @livewireScripts
+        <script src="home/js/bootstrap.bundle.min.js"></script>
+		<script src="home/js/tiny-slider.js"></script>
+		<script src="home/js/custom.js"></script>
     </body>
 </html>

@@ -1,44 +1,62 @@
+<nav class="custom-navbar navbar navbar-expand-md navbar-dark bg-dark" aria-label="Furni navigation bar">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">Furni<span>.</span></a>
 
-<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-<div class="container">
-    <a class="navbar-brand" href="index.html">Furni<span>.</span></a>
+        <div class="collapse navbar-collapse" id="navbarsFurni">
+            <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{url('userpage')}}">Home</a>
+                </li>
+                <li><a class="nav-link" href="{{url('shop')}}">Shop</a></li>
+                <li><a class="nav-link" href="{{url('about')}}">About us</a></li>
+                <li><a class="nav-link" href="{{url('servicesupport')}}">Services</a></li>
+                <li><a class="nav-link" href="{{url('blogpage')}}">Blog</a></li>
+                <li><a class="nav-link" href="{{url('contact')}}">Contact us</a></li>
+            </ul>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+            <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+                @if(Route::has('login'))
+                @auth
+                <!-- Cart Icon -->
+                <li><a class="nav-link" href="{{url('cart')}}"><img src="images/cart.svg" alt="Cart"></a></li>
 
-    <div class="collapse navbar-collapse" id="navbarsFurni">
-        <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-            <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home</a>
-            </li>
-            <li><a class="nav-link" href="shop.html">Shop</a></li>
-            <li><a class="nav-link" href="about.html">About us</a></li>
-            <li><a class="nav-link" href="services.html">Services</a></li>
-            <li><a class="nav-link" href="blog.html">Blog</a></li>
-            <li><a class="nav-link" href="contact.html">Contact us</a></li>
-        </ul>
-
-        <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-        @if(Route::has('login'))
-
-        @auth 
-        <li><a class="nav-link" href="{{route('dashboard')}}"><img src="images/cart.svg"></a></li>
-
-   
+                <!-- User Dropdown Menu -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="images/user.svg" alt="User" class="rounded-circle" style="width: 30px;">
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <li><a class="dropdown-item" href="{{url('cart')}}">Profile</a></li>
+                        <li><a class="dropdown-item" href="{{ route('dashboard') }}">Settings</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('logout') }}" 
+                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </li>
+                    </ul>
+                </li>
                 @else
+                <!-- Login/Register Buttons -->
                 <li class="nav-item mx-2">
-               <a class="btn btn-primary " href="{{ route('login') }}">Log in</a>
-        </li>
-        <li class="nav-item">
-               <a class="btn btn-success" href="{{ route('register') }}">Register</a>
-        </li>
-                @endauth      
-               @endif
-
-</ul>
+                    <a class="btn btn-primary" href="{{ route('login') }}">Log in</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-success" href="{{ route('register') }}">Register</a>
+                </li>
+                @endauth
+                @endif
+            </ul>
+        </div>
     </div>
-</div>
-    
 </nav>
+
+

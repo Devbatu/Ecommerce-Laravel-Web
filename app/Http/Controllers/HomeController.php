@@ -25,4 +25,27 @@ class HomeController extends Controller
             return view('home.userpage');
         }
     }
+    public function userpage() {
+        return view('home.userpage');
+    }
+    public function cart() {
+        return view('cart');
+    }  
+    public function shop() {
+        return view('shop');
+    }
+    public function about() {
+        return view('about');
+    }
+    public function servicesupport() {
+        return view('servicesupport');
+    }
+    public function contact() {
+        return view('contact');
+    }
+    public function blogpage() {
+        return view('blogpage');
+    }
+
+
 }

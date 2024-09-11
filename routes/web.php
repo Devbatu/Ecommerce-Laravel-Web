@@ -16,3 +16,11 @@ Route::middleware([
     })->name('dashboard');
 });
 Route::get('/redirect',[HomeController::class,'redirect']);
+Route::get('/userpage',[HomeController::class,'userpage']);
+Route::get('/cart',[HomeController::class,'cart']);
+Route::get('/shop',[HomeController::class,'shop']);
+Route::get('/about',[HomeController::class,'about']);
+Route::get('/servicesupport',[HomeController::class,'servicesupport']);
+Route::get('/contact',[HomeController::class,'contact']);
+Route::get('/blogpage',[HomeController::class,'blogpage']);
+
