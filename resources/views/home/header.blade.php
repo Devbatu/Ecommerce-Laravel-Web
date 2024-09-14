@@ -30,7 +30,8 @@
                         <img src="images/user.svg" alt="User" class="rounded-circle" style="width: 30px;">
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                        <li><a class="dropdown-item" href="{{url('cart')}}">Profile</a></li>
+
+                        <li><a class="dropdown-item" href="{{url('/redirect')}}">Profile</a></li>
                         <li><a class="dropdown-item" href="{{ route('dashboard') }}">Settings</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li>
