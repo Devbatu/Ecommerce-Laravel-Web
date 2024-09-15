@@ -161,6 +161,11 @@
                         <span class="sub-item">Add Product</span>
                       </a>
                     </li>
+                    <li>
+                      <a href="{{url('productspage')}}">
+                        <span class="sub-item">Show Products</span>
+                      </a>
+                    </li>
                   </ul>
                 </div>
               </li>

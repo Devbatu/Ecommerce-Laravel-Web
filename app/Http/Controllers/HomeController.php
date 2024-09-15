@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Product;
 
 class HomeController extends Controller
 {
 
     public function index(){
-        return view('home.userpage');
+        $product=Product::all();
+        return view('home.userpage',compact('product'));
     }
 
     public function redirect()
@@ -26,26 +28,33 @@ class HomeController extends Controller
         }
     }
     public function userpage() {
-        return view('home.userpage');
+        $product=Product::all();
+        return view('home.userpage',compact('product'));
     }
     public function cart() {
-        return view('cart');
+        return view('home.cart');
     }  
     public function shop() {
-        return view('shop');
+        $product = Product::paginate(4);
+        return view('home.shop', compact('product'));
     }
     public function about() {
-        return view('about');
+        return view('home.about');
     }
     public function servicesupport() {
-        return view('servicesupport');
+        return view('home.servicesupport');
     }
     public function contact() {
-        return view('contact');
+        return view('home.contact');
     }
     public function blogpage() {
-        return view('blogpage');
+        return view('home.blogpage');
     }
 
+    public function product_details($id) {
+        $product=Product::find($id);
+
+        return view('home.product_details',compact('product'));
+    }
 
 }

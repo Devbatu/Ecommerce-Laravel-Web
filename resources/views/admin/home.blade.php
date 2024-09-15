@@ -15,7 +15,7 @@
       <!-- Start Sidebar -->
        @include('admin.sidebar')
       <!-- End Sidebar -->
-      
+   
       <!-- Start Navbar -->
       @include('admin.navbar')
       <!-- End Navbar -->
@@ -23,6 +23,10 @@
       <!-- Start Info Section -->
       @include('admin.infosection')
       <!-- End Info Section -->
+
+      <!-- Start User Stats -->
+      @include('admin.hoam')
+      <!-- End User Stats -->
 
       <!-- Start User Stats -->
       @include('admin.userstats')
@@ -52,11 +56,9 @@
       <!-- Start Footer -->
       @include('admin.adminfooter')
       <!-- End Footer -->
-
       <!-- Start Custom template -->
       @include('admin.customtemplatesidebar')
       <!-- End Custom template -->
-
       <!-- Start Scriptsrc codes -->
       @include('admin.infooutofproject')
       <!-- End Scriptsrc codes -->

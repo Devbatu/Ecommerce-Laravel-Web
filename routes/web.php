@@ -28,6 +28,11 @@ Route::get('/catagory',[AdminController::class,'catagory']);
 Route::get('/delete_catagory/{id}',[AdminController::class,'delete_catagory']);
 Route::post('/add_catagory',[AdminController::class,'add_catagory']);
 Route::get('/product',[AdminController::class,'product']);
+Route::get('/productspage',[AdminController::class,'productspage']);
 Route::post('/add_product',[AdminController::class,'add_product']);
+Route::get('/delete_product/{id}',[AdminController::class,'delete_product']);
+Route::get('/update_product/{id}',[AdminController::class,'update_product']);
+Route::post('/update_product_confirm/{id}',[AdminController::class,'update_product_confirm']);
+Route::get('/product_details/{id}',[HomeController::class,'product_details']);
 
 
