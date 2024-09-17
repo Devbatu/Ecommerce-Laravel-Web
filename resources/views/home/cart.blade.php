@@ -12,6 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="author" content="Untree.co">
   <link rel="shortcut icon" href="favicon.png">
+  <base href="/public">
 
   <meta name="description" content="" />
   <meta name="keywords" content="bootstrap, bootstrap4" />
@@ -29,20 +30,6 @@
 		<!-- Start Header/Navigation -->
 		 @include('home.header')
 		<!-- End Header/Navigation -->
-
-		<!-- Start Hero Section -->
-			<div class="hero">
-				<div class="container">
-					<div class="row justify-content-between">
-						<div class="col-lg-5">
-							<div class="intro-excerpt">
-								<h1>Cart</h1>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		<!-- End Hero Section -->
 
 		
 
@@ -63,69 +50,47 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td class="product-thumbnail">
-                            <img src="images/product-1.png" alt="Image" class="img-fluid">
-                          </td>
-                          <td class="product-name">
-                            <h2 class="h5 text-black">Product 1</h2>
-                          </td>
-                          <td>$49.00</td>
-                          <td>
-                            <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
-                              <div class="input-group-prepend">
-                                <button class="btn btn-outline-black decrease" type="button">&minus;</button>
-                              </div>
-                              <input type="text" class="form-control text-center quantity-amount" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                              <div class="input-group-append">
-                                <button class="btn btn-outline-black increase" type="button">&plus;</button>
-                              </div>
-                            </div>
-        
-                          </td>
-                          <td>$49.00</td>
-                          <td><a href="#" class="btn btn-black btn-sm">X</a></td>
-                        </tr>
-        
-                        <tr>
-                          <td class="product-thumbnail">
-                            <img src="images/product-2.png" alt="Image" class="img-fluid">
-                          </td>
-                          <td class="product-name">
-                            <h2 class="h5 text-black">Product 2</h2>
-                          </td>
-                          <td>$49.00</td>
-                          <td>
-                            <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
-                              <div class="input-group-prepend">
-                                <button class="btn btn-outline-black decrease" type="button">&minus;</button>
-                              </div>
-                              <input type="text" class="form-control text-center quantity-amount" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                              <div class="input-group-append">
-                                <button class="btn btn-outline-black increase" type="button">&plus;</button>
-                              </div>
-                            </div>
-        
-                          </td>
-                          <td>$49.00</td>
-                          <td><a href="#" class="btn btn-black btn-sm">X</a></td>
-                        </tr>
+                        @php
+                          $totalprice=0;
+                        @endphp
+
+                      
+@foreach($cart as $cartItem)
+    @php
+        $product = $products->where('id', $cartItem->product_id)->first();
+
+        if ($product) {
+            $totalprice += $cartItem->price; 
+        }
+    @endphp
+
+    @if($product)
+        <tr>
+            <td class="product-thumbnail">
+                <img src="/products/{{$cartItem->image}}" alt="Image" class="img-fluid">
+            </td>
+            <td class="product-name">
+                <h2 class="h5 text-black">{{$cartItem->product_title}}</h2>
+            </td>
+            <td>{{$product->discountprice}}TL</td>
+            <td>{{$cartItem->quantity}}</td>
+            <td>{{$cartItem->price}}TL</td> 
+            <td><a href="{{url('remove_cart',$cartItem->id)}}" onclick="return confirm('Are you sure remove this product?')" class="btn btn-danger mb-5 btn-sm">X</a></td>
+        </tr>
+    @endif
+@endforeach
+
                       </tbody>
                     </table>
                   </div>
                 </form>
               </div>
         
+				<span class="row col-12 col-md-4 col-lg-3 mb-5">
+        {{ $cart->withQueryString()->links('pagination::bootstrap-5') }}
+				</span>		
               <div class="row">
                 <div class="col-md-6">
-                  <div class="row mb-5">
-                    <div class="col-md-6 mb-3 mb-md-0">
-                      <button class="btn btn-black btn-sm btn-block">Update Cart</button>
-                    </div>
-                    <div class="col-md-6">
-                      <button class="btn btn-outline-black btn-sm btn-block">Continue Shopping</button>
-                    </div>
-                  </div>
                   <div class="row">
                     <div class="col-md-12">
                       <label class="text-black h4" for="coupon">Coupon</label>
@@ -147,20 +112,13 @@
                           <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
                         </div>
                       </div>
-                      <div class="row mb-3">
-                        <div class="col-md-6">
-                          <span class="text-black">Subtotal</span>
-                        </div>
-                        <div class="col-md-6 text-right">
-                          <strong class="text-black">$230.00</strong>
-                        </div>
-                      </div>
+                      
                       <div class="row mb-5">
                         <div class="col-md-6">
                           <span class="text-black">Total</span>
                         </div>
                         <div class="col-md-6 text-right">
-                          <strong class="text-black">$230.00</strong>
+                          <strong class="text-black">{{$totalprice}}TL</strong>
                         </div>
                       </div>
         

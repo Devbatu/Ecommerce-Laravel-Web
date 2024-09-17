@@ -13,7 +13,7 @@
 						$i = 0;
 					@endphp
 
-					@foreach($product as $product) 
+					@foreach($product as $products) 
 						@php
 							$i++;
 						@endphp
@@ -21,11 +21,10 @@
 						@if($i <= 3)
 							<!-- Start Column -->
 							<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-								<a class="product-item" href="cart.html">
-									<img src="/products/{{$product->image}}" class="img-fluid product-thumbnail">
-									<h3 class="product-title">{{ $product->title }}</h3>
-									<strong class="product-price">${{ $product->price }}</strong>TL
-
+								<a class="product-item" href="{{url('product_details',$products->id)}}">
+									<img src="/products/{{$products->image}}" class="img-fluid product-thumbnail">
+									<h3 class="product-title">{{ $products->title }}</h3>
+									<strong class="product-price">${{ $products->price }}</strong>TL
 									<span class="icon-cross">
 										<img src="images/cross.svg" class="img-fluid">
 									</span>
