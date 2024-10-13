@@ -24,7 +24,7 @@
 								<a class="product-item" href="{{url('product_details',$products->id)}}">
 									<img src="/products/{{$products->image}}" class="img-fluid product-thumbnail">
 									<h3 class="product-title">{{ $products->title }}</h3>
-									<strong class="product-price">${{ $products->price }}</strong>TL
+									<strong class="product-price">{{ $products->price }}</strong>TL
 									<span class="icon-cross">
 										<img src="images/cross.svg" class="img-fluid">
 									</span>

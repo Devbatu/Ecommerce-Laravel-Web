@@ -106,5 +106,13 @@ class HomeController extends Controller
 
         return redirect()->back();
     } 
-
+    
+    public function clearDeletedCart()
+    {
+        // Silinmiş olan cartItem'ları veritabanından tamamen kaldır
+        Cart::where('is_deleted', true)->delete();
+    
+        // İşlem sonrası kullanıcıya bir mesaj gösterebilir veya sepet sayfasına yönlendirebilirsiniz
+        return redirect()->back()->with('success', 'Silinmiş ürünler başarıyla temizlendi.');
+    }
 }

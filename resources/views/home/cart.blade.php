@@ -11,7 +11,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="author" content="Untree.co">
-  <link rel="shortcut icon" href="favicon.png">
+  <link rel="shortcut icon" href="home/favicon.png">
   <base href="/public">
 
   <meta name="description" content="" />
@@ -54,31 +54,35 @@
                           $totalprice=0;
                         @endphp
 
-                      
-@foreach($cart as $cartItem)
+                        @foreach($cart as $cartItem)
     @php
         $product = $products->where('id', $cartItem->product_id)->first();
 
-        if ($product) {
+        if ($product && !$cartItem->is_deleted) { // is_deleted alanı yoksa bu kontrolü kaldırın
             $totalprice += $cartItem->price; 
         }
     @endphp
 
-    @if($product)
-        <tr>
-            <td class="product-thumbnail">
-                <img src="/products/{{$cartItem->image}}" alt="Image" class="img-fluid">
-            </td>
-            <td class="product-name">
-                <h2 class="h5 text-black">{{$cartItem->product_title}}</h2>
-            </td>
-            <td>{{$product->discountprice}}TL</td>
-            <td>{{$cartItem->quantity}}</td>
-            <td>{{$cartItem->price}}TL</td> 
-            <td><a href="{{url('remove_cart',$cartItem->id)}}" onclick="return confirm('Are you sure remove this product?')" class="btn btn-danger mb-5 btn-sm">X</a></td>
-        </tr>
-    @endif
+    @if($product && !$cartItem->is_deleted)
+                <tr>
+                    <td class="product-thumbnail">
+                        <img src="/products/{{$cartItem->image}}" alt="Image" class="img-fluid" style="max-width: 100px; height: auto;">
+                    </td>
+                    <td class="product-name">
+                        <h2 class="h6 text-black">{{$cartItem->product_title}}</h2>
+                    </td>
+                    <td>{{$product->discountprice}} TL</td>
+                    <td>{{$cartItem->quantity}}</td>
+                    <td>{{$cartItem->price}} TL</td>
+                    <td>
+                        <a href="{{url('remove_cart',$cartItem->id)}}" 
+                           onclick="return confirm('Are you sure remove this product?')" 
+                           class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            @endif
 @endforeach
+
 
                       </tbody>
                     </table>
